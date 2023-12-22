@@ -6,6 +6,7 @@ export const useAuthStore = defineStore({
   state: () => ({
     username: "",
     password: "",
+    token: "",
     isLoggedIn: false,
   }),
   actions: {
