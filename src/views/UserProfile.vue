@@ -18,7 +18,7 @@ export default {
   methods: {
     async fetchUserProfile() {
       try {
-        const authToken = localStorage.getItem('token'); // Alterado para 'token'
+        const authToken = localStorage.getItem('token'); // Verifique se a chave é 'token'
 
         if (!authToken) {
           console.error('Token not found in Local Storage');
@@ -29,7 +29,7 @@ export default {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`,
+            'Authorization': `Token ${authToken}`, // Use 'Token' ou 'Bearer', dependendo da configuração da sua API
           },
         });
 
