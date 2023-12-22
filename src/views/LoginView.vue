@@ -5,7 +5,7 @@
       <input type="text" v-model="username" placeholder="Usuário">
       <input type="password" v-model="password" placeholder="Senha">
       <button type="submit">Login</button>
-      token: {{ token }}
+      token: {{ username }}
     </form>
   </div>
 </template>
