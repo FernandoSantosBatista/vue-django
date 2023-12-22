@@ -15,7 +15,6 @@ import { mapActions } from "pinia";
 import { useAuthStore } from "../stores/store";
 export default {
   name: "LoginView",
-  token: localStorage.getItem("token", token),
   
   methods: {
   ...mapActions(useAuthStore, ["login"]),
