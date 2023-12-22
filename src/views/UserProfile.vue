@@ -18,11 +18,18 @@ export default {
   methods: {
     async fetchUserProfile() {
       try {
+        const authToken = localStorage.getItem('authToken');
+
+        if (!authToken) {
+          console.error('Token not found in Local Storage');
+          return;
+        }
+
         const response = await fetch('https://django-rest-knox.up.railway.app/api/profile/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            // Adicione cabeçalhos de autenticação se necessário
+            'Authorization': `Bearer ${authToken}`,
           },
         });
 
@@ -39,4 +46,3 @@ export default {
   },
 };
 </script>
-
