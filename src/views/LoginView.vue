@@ -6,6 +6,7 @@
       <input type="password" v-model="password" placeholder="Senha">
       <button type="submit">Login</button>
     </form>
+   {{token}}
   </div>
 </template>
 
