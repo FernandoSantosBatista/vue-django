@@ -15,10 +15,6 @@ import { mapActions, mapState } from "pinia";
 import { useAuthStore } from "../stores/store";
 export default {
   name: "LoginView",
-
-  computed: {
-    ...mapState(useAuthStore, ["token"]),
-  },
   
   methods: {
   ...mapActions(useAuthStore, ["login"]),
