@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import axios from "axios";
 
-axios.defaults.baseURL = "django-rest-knox.up.railway.app";
+axios.defaults.baseURL = "https://django-rest-knox.up.railway.app";
 
 
 import App from './App.vue'
