@@ -1,48 +1,26 @@
 <template>
   <div>
-    <h1>User Profile</h1>
-    <p>Username: {{ username }}</p>
+    <h1>Username</h1>
+    <p>{{ username }}</p>
   </div>
 </template>
 
 <script>
+import { useAxios } from "vue";
+
 export default {
-  data() {
+  name: "Username",
+  setup() {
+    const { data } = useAxios({
+      url: "https://django-rest-knox.up.railway.app/api/profile/",
+      headers: {
+        "Authorization": "Token " + localStorage.getItem("token"),
+      },
+    });
+
     return {
-      username: null,
+      username: data.username,
     };
-  },
-  mounted() {
-    this.fetchUserProfile();
-  },
-  methods: {
-    async fetchUserProfile() {
-      try {
-        const authToken = localStorage.getItem('token'); // Verifique se a chave é 'token'
-
-        if (!authToken) {
-          console.error('Token not found in Local Storage');
-          return;
-        }
-
-        const response = await fetch('https://django-rest-knox.up.railway.app/api/profile/', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Token ${authToken}`, // Use 'Token' ou 'Bearer', dependendo da configuração da sua API
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          this.username = data.username;
-        } else {
-          console.error('Failed to fetch user profile');
-        }
-      } catch (error) {
-        console.error('Error fetching user profile:', error);
-      }
-    },
   },
 };
 </script>
