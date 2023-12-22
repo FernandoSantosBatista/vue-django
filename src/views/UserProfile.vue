@@ -18,7 +18,7 @@ export default {
   methods: {
     async fetchUserProfile() {
       try {
-        const authToken = localStorage.getItem('authToken');
+        const authToken = localStorage.getItem('token'); // Alterado para 'token'
 
         if (!authToken) {
           console.error('Token not found in Local Storage');
