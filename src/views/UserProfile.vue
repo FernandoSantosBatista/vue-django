@@ -6,21 +6,25 @@
 </template>
 
 <script>
-import { useAxios } from "vue";
+import axios from "axios";
 
 export default {
   name: "Username",
-  setup() {
-    const { data } = useAxios({
-      url: "https://django-rest-knox.up.railway.app/api/profile/",
-      headers: {
-        "Authorization": "Token " + localStorage.getItem("token"),
-      },
-    });
-
+  data() {
     return {
-      username: data.username,
+      username: "",
     };
+  },
+  mounted() {
+    axios
+      .get("https://django-rest-knox.up.railway.app/api/profile/", {
+        headers: {
+          "Authorization": "Token " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        this.username = response.data.username;
+      });
   },
 };
 </script>
