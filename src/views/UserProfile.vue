@@ -17,7 +17,7 @@ export default {
   },
   mounted() {
     axios
-      .get("https://django-rest-knox.up.railway.app/api/profile/", {
+      .get("http://127.0.0.1:8000/api/profile/", {
         headers: {
           "Authorization": "Token " + localStorage.getItem("token"),
         },
